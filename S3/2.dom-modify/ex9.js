@@ -1,9 +1,17 @@
 const divs$$ = document.querySelectorAll(".fn-insert-here");
-// console.log(div$$)
-for (let i = 0; i < divs$$.length; i++) {
-    const div = divs$$[i];
+for (const div$$ of divs$$) {
     const p$$ = document.createElement("p");
     p$$.textContent = 'Voy dentro!';
-    div.appendChild (p$$);
-    
+    div$$.appendChild (p$$);
 }
+
+// otra forma de hacerlo
+
+// const divs$$ = document.querySelectorAll(".fn-insert-here");
+// const p$$ = document.createElement("p");
+// p$$.textContent = "Voy dentro!";
+// divs$$.forEach(function(div$$) // div => 
+// {
+//     const clonedP = p$$.cloneNode(true);
+//     div$$.appendChild(clonedP);
+// });
