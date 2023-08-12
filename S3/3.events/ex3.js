@@ -1,5 +1,5 @@
 const input$$ = document.querySelector("input");
-function texto (event){
-    console.log (event.target.value)
+function handleInput (event){
+    console.log (event.target.value);
 }
-input$$.addEventListener("input", texto);
+input$$.addEventListener("input", handleInput);

@@ -1,5 +1,5 @@
 const input$$ = document.querySelector("input");
-function focusEvent (event){
+function handleFocus (event){
     console.log (event.target.value);
 }
-input$$.addEventListener("focus", focusEvent);
+input$$.addEventListener("focus", handleFocus);
