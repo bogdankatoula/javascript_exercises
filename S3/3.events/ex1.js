@@ -1,9 +1,8 @@
 const button$$ = document.createElement("button");
-button$$.id = "btnToClick"; // Añadir el ID "btnToClick" al boton
-// button$$.classList.add("btnToClick");  en caso de querer agregar la clase "btnToClick" al boton
+button$$.id = "btnToClick";
+button$$.textContent = "Apúntate";
 document.body.appendChild(button$$);
-
-function boton (){
-	console.log("Haz Click Aquí");
+function handleClick (event){
+    console.log (event)
 }
-button$$.addEventListener("click", boton);
+button$$.addEventListener("click", handleClick);
