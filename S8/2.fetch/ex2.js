@@ -5,11 +5,13 @@ const h2$$ = document.createElement("h2");
 document.body.insertBefore(h2$$, input$$);
 h2$$.textContent = "Which country is your name from?";
 
+// creamos elemento div que sera el contenedor padre de los resultados de busqueda. Nos sera util para eliminar los resultados anteriores al hacer nueva busqueda
 const resultContainer$$ = document.createElement("div");
 document.body.appendChild(resultContainer$$);
 
 const handleClick = event => {
     event.preventDefault();
+    // creamos bucle while para borrar todos los elementos hijos del contenedor div cuando hacemos nueva busqueda. Al hacer click, se revisa si hay hijos y se borran. Cuando ya no quedan hijos, se pasa a ejecutar el resto del codigo
     while (resultContainer$$.firstChild) {
         resultContainer$$.removeChild(resultContainer$$.firstChild);
     }
@@ -26,6 +28,7 @@ const handleClick = event => {
         const buttonCount$$ = document.createElement("button");
         buttonCount$$.textContent = "X";
         buttonCount$$.addEventListener("click", () => {
+            // remove se aplica directamente al elemento que se quiere eliminar
                 pCount$$.remove();
                 buttonCount$$.remove();
         });
@@ -38,6 +41,7 @@ const handleClick = event => {
                 const buttonCountry$$ = document.createElement("button");
                 buttonCountry$$.textContent = "X";
                 buttonCountry$$.addEventListener("click", () => {
+                    // removeChild se aplica al elemento padre y como argumento se pasa un unico hijo que se quiere eliminar
                     resultContainer$$.removeChild(pCountry$$);
                     resultContainer$$.removeChild(buttonCountry$$);
                 });
