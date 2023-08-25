@@ -2,8 +2,8 @@ const streamers = [{name: 'Rubius', age: 32, gameMorePlayed: 'Minecraft'}, {name
 
 const input$$ = document.querySelector('[data-function="toFilterStreamers"]');
 
-const handleInput = ev => {
-    const filteredStreamer = streamers.filter(streamer => streamer.name.toLowerCase().includes(ev.target.value.trim().toLowerCase()));
+const handleInput = () => {
+    const filteredStreamer = streamers.filter(streamer => streamer.name.toLowerCase().includes(input$$.value.trim().toLowerCase()));
     
     // otra forma mas larga
     // const inputStreamer = ev.target.value.trim().toLowerCase();
