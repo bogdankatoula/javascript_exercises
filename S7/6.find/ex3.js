@@ -7,3 +7,6 @@ console.log(foundAlien, foundMutation);
 // Añadir la propiedad mutation al objeto alien
 foundAlien.mutation = foundMutation;
 console.log(foundAlien);
+//otra forma con spread operator creando nueva constante en vez de modificar la actual
+// const newSuperAlien = {...foundAlien, mutation: founMutation};
+// console.log(newSuperAlien);
