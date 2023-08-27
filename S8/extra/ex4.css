@@ -1,0 +1,7 @@
+[data-function="planets"] {
+    justify-content: space-around;
+}
+.planetImg {
+    width: 250px;
+    height: 250px;
+}
