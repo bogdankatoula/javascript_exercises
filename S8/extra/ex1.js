@@ -30,7 +30,4 @@ characters.then(characters => {
 })
 .catch(error=>{
     console.log("Error manejando datos de la api:", error);
-})
-
-
-
+});
