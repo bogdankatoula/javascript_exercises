@@ -58,6 +58,19 @@ planets.then(planets => {
                 <h4>${character.name}</h4>
                 <img src="${character.avatar}" alt="${character.name}">
                 `;
+                 // Agregar evento click para mostrar/ocultar descripción
+                 character$$.addEventListener("click", () => {
+                    const description$$ = document.createElement("p");
+                    description$$.textContent = character.description;
+                    
+                    // Remover descripción anterior si existe
+                    const existingDescription = character$$.querySelector("p");
+                    if (existingDescription) {
+                        existingDescription.remove();
+                    } else {
+                        character$$.appendChild(description$$); // Mostrar descripción
+                    }
+                });
                 characters$$.appendChild(character$$);
                     });
                 }
@@ -72,14 +85,6 @@ planets.then(planets => {
                     characters$$.innerHTML = "";
                     displayCharacters(filteredCharacters);
                 })
-                // const displayDescription = character =>{
-                //     character$$.addEventListener("click", ()=>{
-                //         const p$$ = document.createElement("p");
-                //         p$$.textContent = character.description;
-                //         character$$.appendChild(p$$);
-                //     })
-                // }
-                // displayDescription(character);
             }
             catch (error) {
                 console.log("Error handling characters click event:", error);
