@@ -11,6 +11,9 @@ const fetchCharacters = async () => {
     }
 }
 fetchCharacters();
+// const fetchCharacters = () => {
+//     fetch("https://hp-api.onrender.com/api/characters").then(response => response.json()).then(res=>{return res})
+// }
 
 const callAcharacter$$ = document.createElement("button");
 callAcharacter$$.textContent = "Call a character";
@@ -19,7 +22,14 @@ const main$$ = document.createElement("main");
 document.body.appendChild(main$$);
 
 let characterIndex = 0;  // Inicializa el contador de índices
-    
+
+// otra forma mas corta de hacer el fetch
+//button$$.addEventListener("click", getCharacter);
+// function getCharacter(){
+    // console.log(21) para comprobar que funciona el la funcion dentro del evento click como esperamos
+    // fetch("https://hp-api.onrender.com/api/characters").then(response => response.json()).then(res=>{console.log(res)})
+// }
+
 callAcharacter$$.addEventListener("click", async () => {
     try{
         const characters = await fetchCharacters();
