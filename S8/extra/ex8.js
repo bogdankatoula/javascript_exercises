@@ -1,57 +1,28 @@
-const fetchCharacters = async () => {
-    try {
-        const response = await fetch("https://hp-api.onrender.com/api/characters");
-        const res = await response.json();
-        // console.log(res);
-        return res;
-    }
-    catch (error) {
-        console.log("Error fetching characters:", error);
-        return [];
-    }
-}
-fetchCharacters();
-// const fetchCharacters = () => {
-//     fetch("https://hp-api.onrender.com/api/characters").then(response => response.json()).then(res=>{return res})
-// }
-
-const callAcharacter$$ = document.createElement("button");
-callAcharacter$$.textContent = "Call a character";
-document.body.appendChild(callAcharacter$$);
+const callAcat$$ = document.createElement("button");
+callAcat$$.textContent = "Call a character";
+document.body.appendChild(callAcat$$);
 const main$$ = document.createElement("main");
 document.body.appendChild(main$$);
 
-let characterIndex = 0;  // Inicializa el contador de índices
+callAcat$$.addEventListener("click", getCat);
 
-// otra forma mas corta de hacer el fetch
-//button$$.addEventListener("click", getCharacter);
-// function getCharacter(){
-    // console.log(21) para comprobar que funciona el la funcion dentro del evento click como esperamos
-    // fetch("https://hp-api.onrender.com/api/characters").then(response => response.json()).then(res=>{console.log(res)})
-// }
+function getCat(){
+    console.log(21) // para comprobar que funciona la funcion dentro del evento click como esperamos
+    fetch("https://api.thecatapi.com/v1/images/search").then(response => response.json()).then(res=>{console.log(res);
+    printCat(res[0]) // callback para no hacer todo dentro de la misma funcion, creamos la funcion mas abajo y luego la llamamos. Solo hay una posicion en el array que genera cada vez una imagen nueva
+    })
+}
 
-callAcharacter$$.addEventListener("click", async () => {
-    try{
-        const characters = await fetchCharacters();
-        // console.log(characters);
-        if (characterIndex < characters.length){
-            const character = characters[characterIndex];
-            const div$$ = document.createElement("div");
-            main$$.appendChild(div$$);
-            div$$.innerHTML = `<h2>${character.name}</h2>
-            <img src="${character.image}" alt="${character.name}">
-            `
-            const remove$$ = document.createElement("button");
-            div$$.appendChild(remove$$);
-            remove$$.textContent = "Remove";
-            remove$$.addEventListener("click", () => div$$.remove());
-            characterIndex++;  // Incrementa el contador de índices
-        }
-        else {
-            console.log("Ya se han mostrado todos los personajes.");
-        }
-    }
-    catch(error){
-        console.log("Error manejando datos de la api:", error)
-    }
-});
+// creamos la funcion y ponemos image como parametro que sera res[0] de la api cuando llamemos la funcion
+function printCat(image){
+    const div$$ = document.createElement("div");
+    main$$.appendChild(div$$);
+    const img$$ = document.createElement("img");
+    div$$.appendChild(img$$);
+    img$$.src = image.url;
+    img$$.width = "500";
+    const button$$ = document.createElement("button");
+    div$$.appendChild(button$$);
+    button$$.textContent = "Remove";
+    button$$.addEventListener("click", ()=>div$$.remove());
+}
